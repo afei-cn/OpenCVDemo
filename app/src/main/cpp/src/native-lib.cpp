@@ -20,7 +20,7 @@ int playVideo(const string &filename) {
     __TIC1__(get_CV_CAP_PROP_FPS);
     double rate = capture.get(CV_CAP_PROP_FPS); //获取帧率
     __TOC1__(get_CV_CAP_PROP_FPS);
-    LOGD("rate: %d", rate);
+    LOGD("rate: %f", rate);
     Mat frame;
     char output_path[32];
     int index = 0;
@@ -47,7 +47,7 @@ Java_com_afei_opencvdemo_MainActivity_stringFromJNI(
         JNIEnv *env,
         jobject /* this */) {
     string filepath = "/sdcard/test.mp4";
-    LOGD("filepath: %s", filepath);
+    LOGD("filepath: %s", filepath.c_str());
     int ret = playVideo(filepath);
     LOGD("ret: %d", ret);
     return env->NewStringUTF("Hello from C++");
