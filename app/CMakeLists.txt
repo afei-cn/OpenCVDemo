@@ -43,17 +43,11 @@ SET(PROJECT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/src/main/cpp)
 INCLUDE_DIRECTORIES(${PROJECT_PATH}/inc)
 ## src
 FILE(GLOB SRC_LIST "${PROJECT_PATH}/src/*.cpp")
-## lib
-SET(PRO_LIBS)
-LIST(APPEND PRO_LIBS
-    ${PROJECT_PATH}/lib/${ANDROID_ABI}/libtflite_mtk_static.so
-    ${PROJECT_PATH}/lib/${ANDROID_ABI}/libTFLiteSenseTimeSegFloat.a
-)
+
 ## output lib
 ADD_LIBRARY(native-lib
             SHARED
             ${SRC_LIST} )
 TARGET_LINK_LIBRARIES(native-lib
                       ${OPENCV340_LIBS}
-                      ${PRO_LIBS}
                       log )
